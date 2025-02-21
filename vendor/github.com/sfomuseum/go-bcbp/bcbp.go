@@ -1,9 +1,12 @@
 package bcbp
 
 import (
-	_ "fmt"
 	"log/slog"
+	"math"
+	"strconv"
 	"strings"
+
+	"github.com/skrushinsky/scaliger/julian"
 )
 
 type BCBP struct {
@@ -21,6 +24,18 @@ type BCBP struct {
 	SeatNumber                 string `json:"seat_number"`
 	CheckInSequenceNumber      string `json:"checkin_sequence_number"`
 	PassengerStatus            string `json:"passenger_status"`
+}
+
+func (b *BCBP) MonthDay() (int, int, error) {
+
+	jd, err := strconv.ParseFloat(b.DateOfFlight, 64)
+
+	if err != nil {
+		return -1, -1, err
+	}
+
+	cd := julian.JulianToCivil(jd)
+	return cd.Month, int(math.Floor(cd.Day)), nil
 }
 
 func (b *BCBP) String() string {
