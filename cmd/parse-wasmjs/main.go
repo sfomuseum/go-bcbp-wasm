@@ -15,6 +15,11 @@ func ParseFunc() js.Func {
 
 		bcbp_str := args[0].String()
 
+		logger := slog.Default()
+		logger = logger.With("raw", bcbp_str)
+		
+		logger.Info("Parse BCBP")
+		
 		handler := js.FuncOf(func(this js.Value, args []js.Value) interface{} {
 
 			resolve := args[0]
@@ -23,6 +28,7 @@ func ParseFunc() js.Func {
 			b, err := bcbp.Parse(bcbp_str)
 			
 			if err != nil {
+				logger.Error("Failed to parse BCBP", "error", err)
 				reject.Invoke(fmt.Printf("Failed to parse '%s', %v\n", bcbp_str, err))
 				return nil
 			}
@@ -30,6 +36,7 @@ func ParseFunc() js.Func {
 			enc, err := json.Marshal(b)
 
 			if err != nil {
+				logger.Error("Failed to marshal BCBP", "error", err)				
 				reject.Invoke(fmt.Printf("Failed to marshal result for '%s', %v\n", bcbp_str, err))
 				return nil
 			}

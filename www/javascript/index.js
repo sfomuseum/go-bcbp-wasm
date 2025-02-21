@@ -27,6 +27,8 @@ async function parse() {
     result_el.style.display = "none";
     
     result_el.innerHTML = "";
+
+    console.log("Parse BCBP string '" + bcbp_str + "'");
     
     parse_bcbp(bcbp_str).then(rsp => {
 
@@ -48,6 +50,9 @@ async function parse() {
 	result_el.style.display = "block";	    	    	
 	
     }).catch(err => {
+
+	console.error("Failed to parse BCBP string ", err);
+	
 	result_el.innerText = "There was a problem parsing your BCBP string:" + err;
 	result_el.style.display = "block";    	
     });
