@@ -1,4 +1,4 @@
-# github.com/sfomuseum/go-bcbp v0.0.0-20250221233040-29072326992a
+# github.com/sfomuseum/go-bcbp v0.0.0-20250222022941-2340c6764b85
 ## explicit; go 1.24.0
 github.com/sfomuseum/go-bcbp
 # github.com/skrushinsky/scaliger v0.0.4

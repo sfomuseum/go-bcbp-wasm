@@ -9,11 +9,15 @@ import (
 	"github.com/sfomuseum/go-bcbp"
 )
 
+type LegResponse struct {
+	Fields *bcbp.Leg `json:"fields"`
+	Month  int        `json:"month"`
+	Day    int        `json:"day"`	
+}
+
 type ParseResponse struct {
 	Raw    string     `json:"raw"`
-	Fields *bcbp.BCBP `json:"fields"`
-	Month  int        `json:"month"`
-	Day    int        `json:"day"`
+	Legs []*LegResponse `json:"legs"`
 }
 
 func ParseFunc() js.Func {
@@ -32,7 +36,7 @@ func ParseFunc() js.Func {
 			resolve := args[0]
 			reject := args[1]
 
-			b, err := bcbp.Parse(bcbp_str)
+			b, err := bcbp.Unmarshal(bcbp_str)
 
 			if err != nil {
 				logger.Error("Failed to parse BCBP", "error", err)
@@ -42,18 +46,25 @@ func ParseFunc() js.Func {
 
 			rsp := ParseResponse{
 				Raw:    bcbp_str,
-				Fields: b,
+				Legs: make([]*LegResponse, len(b.Legs)),
 			}
 
-			m, d, err := b.MonthDay()
+			for idx, l := range b.Legs {
 
-			if err != nil {
-				logger.Error("Failed to derive month/day from date of flight", "error", err)
-			} else {
-				rsp.Month = m
-				rsp.Day = d
+				rsp.Legs[idx] = &LegResponse{
+					Fields: l,
+				}
+				
+				m, d, err := l.MonthDay()
+
+				if err != nil {
+					logger.Error("Failed to derive month/day from date of flight", "error", err)
+				} else {
+					rsp.Legs[idx].Month = m
+					rsp.Legs[idx].Day = d
+				}
 			}
-
+			
 			enc, err := json.Marshal(rsp)
 
 			if err != nil {
