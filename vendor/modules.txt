@@ -1,4 +1,7 @@
-# github.com/sfomuseum/go-bcbp v0.0.0-20250222022941-2340c6764b85
+# github.com/aaronland/go-roster v1.0.0
+## explicit; go 1.16
+github.com/aaronland/go-roster
+# github.com/sfomuseum/go-bcbp v0.0.1
 ## explicit; go 1.24.0
 github.com/sfomuseum/go-bcbp
 # github.com/skrushinsky/scaliger v0.0.4

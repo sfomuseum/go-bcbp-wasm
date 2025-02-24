@@ -1,4 +1,6 @@
-github.com/sfomuseum/go-bcbp v0.0.0-20250222022941-2340c6764b85 h1:y2d4v0NtYL1LebJaHsyb+EK1fuvKNi/ZXbKMwQJ5NEc=
-github.com/sfomuseum/go-bcbp v0.0.0-20250222022941-2340c6764b85/go.mod h1:WlLHTbjqWyozKkoZQJezr0pogas4V8d/GHfpx2iEmFs=
+github.com/aaronland/go-roster v1.0.0 h1:FRDGrTqsYySKjWnAhbBGXyeGlI/o5/t9FZYCbUmyQtI=
+github.com/aaronland/go-roster v1.0.0/go.mod h1:KIsYZgrJlAsyb9LsXSCvlqvbcCBVjCSqcQiZx42i9ro=
+github.com/sfomuseum/go-bcbp v0.0.1 h1:xq30ZEjkSRHLnLYObDTT9Byr/HXA4aT/up8qeV7yujM=
+github.com/sfomuseum/go-bcbp v0.0.1/go.mod h1:dW5YvL3IDAhi9ATI6hMwrrv6S2HTkeHKkAHnqUed1zI=
 github.com/skrushinsky/scaliger v0.0.4 h1:uKsSXAO/xc8aGsg3h5c462W61HK4rpoO0VO32VgWnbQ=
 github.com/skrushinsky/scaliger v0.0.4/go.mod h1:H//Ka8z+A0+umExTOvDaUVJSfxPpcGIXCLzYdCGDU9Q=

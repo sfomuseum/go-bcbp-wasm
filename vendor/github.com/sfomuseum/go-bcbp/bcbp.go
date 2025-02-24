@@ -40,6 +40,11 @@ func Unmarshal(raw string) (*BCBP, error) {
 	parts := strings.Split(raw, string(GROUP_SEPARATOR))
 	legs := make([]*Leg, len(parts))
 
+	// Account for weirdo BCBP string like the ones listed here:
+	// https://github.com/KDE/kitinerary/blob/master/autotests/bcbpparsertest.cpp#L37
+
+	// https://www.iata.org/contentassets/cfe998bcf9214859afda9c8bf4ff75c3/aidx-xml-imp-guide-v22.1.pdf
+
 	if count != len(legs) {
 		slog.Warn("BCBP length does not match M count.", "expected", count, "have", len(legs))
 		return nil, fmt.Errorf("M count mismatch and liberal parsing not implemented yet")

@@ -51,7 +51,7 @@ func (l *Leg) String() string {
 		l.FromAirport,
 		l.ToAirport,
 		rightPad(l.OperatingCarrierDesignator, " ", OPERATING_CARRIER_DESIGNATOR),
-		leftPad(l.FlightNumber, "0", FLIGHT_NUMBER),
+		rightPad(l.FlightNumber, " ", FLIGHT_NUMBER), // the spec says this is zero-padded but never seems to be
 		l.DateOfFlight,
 		l.CompartmentCode,
 		leftPad(l.SeatNumber, "0", SEAT_NUMBER),
@@ -75,7 +75,7 @@ func ParseLeg(raw string) (*Leg, error) {
 		FromAirport:                strings.TrimSpace(getField(raw, DEPARTURE_AIRPORT_OFFSET, DEPARTURE_AIRPORT)),
 		ToAirport:                  strings.TrimSpace(getField(raw, ARRIVAL_AIRPORT_OFFSET, ARRIVAL_AIRPORT)),
 		OperatingCarrierDesignator: strings.TrimSpace(getField(raw, OPERATING_CARRIER_DESIGNATOR_OFFSET, OPERATING_CARRIER_DESIGNATOR)),
-		FlightNumber:               strings.TrimLeft(getField(raw, FLIGHT_NUMBER_OFFSET, FLIGHT_NUMBER), "0"),
+		FlightNumber:               strings.TrimSpace(getField(raw, FLIGHT_NUMBER_OFFSET, FLIGHT_NUMBER)), // the spec says...
 		DateOfFlight:               getField(raw, FLIGHT_DATE_OFFSET, FLIGHT_DATE),
 		CompartmentCode:            getField(raw, COMPARTMENT_CODE_OFFSET, COMPARTMENT_CODE),
 		SeatNumber:                 strings.TrimLeft(getField(raw, SEAT_NUMBER_OFFSET, SEAT_NUMBER), "0"),
