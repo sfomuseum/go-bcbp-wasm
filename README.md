@@ -4,6 +4,20 @@ WebAssembly (WASM) binary to parse IATA BCBP strings using the [sfomuseum/go-bcb
 
 ## parse_bcbp.wasm
 
+### Building
+
+Run the handy `wamjs` Makefile target:
+
+```
+$> make wasmjs
+GOOS=js GOARCH=wasm \
+		go build -mod vendor -ldflags="-s -w" \
+		-o www/wasm/parse_bcbp.wasm \
+		cmd/parse-wasmjs/main.go
+```
+
+### Usage
+
 ```
 <script src="javascript/wasm_exec.js"></script>
 <script src="javascript/sfomuseum.wasm.js"></script>	
