@@ -75,6 +75,10 @@ fileserver \
 
 ```
 
+For example:
+
+![](docs/images/go-bcbp-wasm-server.png)
+
 ## See also
 
 * https://github.com/sfomuseum/go-bcbp
