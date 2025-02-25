@@ -77,6 +77,8 @@ Where `rsp` looks like this:
 
 ## Example
 
+### Basic
+
 ```
 $> make debug
 fileserver \
@@ -92,6 +94,10 @@ fileserver \
 For example:
 
 ![](docs/images/go-bcbp-wasm-server.png)
+
+### Advanced
+
+For a more complete example which includes client-side parsing of BCBP data in 2D barcodes take a look at the [sfomuseum/www-sfomuseum-boardingpass](https://github.com/sfomuseum/www-sfomuseum-boardingpass) repository.
 
 ## See also
 
