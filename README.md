@@ -96,3 +96,4 @@ For example:
 ## See also
 
 * https://github.com/sfomuseum/go-bcbp
+* https://go.dev/wiki/WebAssembly
